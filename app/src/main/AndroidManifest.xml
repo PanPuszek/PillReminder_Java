@@ -4,9 +4,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/main_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -44,7 +43,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.pum2018.pillreminder_java.MainActivity" />
         </activity>
-        <activity android:name=".AddMedicine"></activity>
+        <activity
+            android:name=".AddMedicine"
+            android:parentActivityName=".StoreActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".StoreActivity" />
+        </activity>
     </application>
 
 </manifest>

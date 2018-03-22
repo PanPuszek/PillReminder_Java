@@ -3,8 +3,12 @@ package com.pum2018.pillreminder_java;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.RadioGroup;
+import android.support.v4.app.NavUtils;
 
 public class AddMedicine extends AppCompatActivity {
 
@@ -15,6 +19,7 @@ public class AddMedicine extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_medicine);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         rg1 = (RadioGroup) findViewById(R.id.radio_group_left);
         rg2 = (RadioGroup) findViewById(R.id.radio_group_right);
@@ -57,5 +62,18 @@ public class AddMedicine extends AppCompatActivity {
         Log.i("You pressed", ": " + realCheck);
         chkId1 = 0;
         chkId2 = 0;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // User clicked on a menu option in the app bar overflow menu
+        switch (item.getItemId()) {
+            // Respond to a click on the "Up" arrow button in the app bar
+            case android.R.id.home:
+                // Navigate back to parent activity (CatalogActivity)
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

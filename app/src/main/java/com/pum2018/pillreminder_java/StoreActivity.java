@@ -14,7 +14,7 @@ public class StoreActivity extends AppCompatActivity {
     }
 
     public void addMedicineToStore(View view){
-        Intent addMedicineToStoreIntent = new Intent(this,AddMedicine.class);
+        Intent addMedicineToStoreIntent = new Intent(StoreActivity.this,AddMedicine.class);
         startActivity(addMedicineToStoreIntent);
     }
 }
