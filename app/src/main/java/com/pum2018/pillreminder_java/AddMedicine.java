@@ -58,5 +58,4 @@ public class AddMedicine extends AppCompatActivity {
         chkId1 = 0;
         chkId2 = 0;
     }
-
 }

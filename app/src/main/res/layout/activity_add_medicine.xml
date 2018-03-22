@@ -82,8 +82,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -97,7 +99,8 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="32dp"
-                android:hint="Medicine Name" />
+                android:hint="Medicine Name"
+                android:textColor="#000000" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -208,57 +211,51 @@
                 </RadioGroup>
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="16dp"
-                android:text="QUANTITY" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/subtraction_button_view"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginLeft="32dp"
-                    android:text="-" />
-
                 <TextView
-                    android:id="@+id/quantity_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:text="1"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/addition_button_view"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
                     android:layout_marginBottom="16dp"
-                    android:text="+" />
+                    android:layout_marginLeft="32dp"
+                    android:text="Quantity"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp" />
+
+                <Spinner
+                    android:id="@+id/spinner_dose_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:entries="@array/array_dose_options"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="20dp"
+                    android:spinnerMode="dropdown" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-            <Button
-                android:id="@+id/add_medicine_to_store"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="16dp"
-                android:text="Add Medicine"
-                android:textAllCaps="false"
-                android:textSize="18sp"
-                android:onClick="addMedicineToStore"/>
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical"
+                android:onClick="addMedicineToStore">
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@mipmap/ic_redeem_black_48dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
