@@ -3,16 +3,16 @@ package com.pum2018.pillreminder_java;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.support.v4.app.NavUtils;
+import android.widget.Toast;
 
 public class AddMedicine extends AppCompatActivity {
 
     RadioGroup rg1, rg2;
+    EditText editQuantity, editMedicine;
     int chkId1 = 0, chkId2 = 0;
 
     @Override
@@ -23,7 +23,9 @@ public class AddMedicine extends AppCompatActivity {
 
         rg1 = (RadioGroup) findViewById(R.id.radio_group_left);
         rg2 = (RadioGroup) findViewById(R.id.radio_group_right);
-        rg1.clearCheck(); // this is so we can start fresh, with no selection on both RadioGroups
+        editQuantity = (EditText) findViewById(R.id.edit_quantity);
+        editMedicine = (EditText) findViewById(R.id.medicine_edit_text_view);
+        rg1.clearCheck();
         rg2.clearCheck();
         rg1.setOnCheckedChangeListener(listener1);
         rg2.setOnCheckedChangeListener(listener2);
@@ -34,11 +36,11 @@ public class AddMedicine extends AppCompatActivity {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if (checkedId != 0) {
-                rg2.setOnCheckedChangeListener(null); // remove the listener before clearing so we don't throw that stackoverflow exception(like Vladimir Volodin pointed out)
+                rg2.setOnCheckedChangeListener(null);
                 chkId1 = rg1.getCheckedRadioButtonId();
-                rg2.clearCheck(); // clear the second RadioGroup!
-                rg2.setOnCheckedChangeListener(listener2); //reset the listener
-                //Log.i("TEST", "rd1 : " + chkId1);
+                rg2.clearCheck();
+                rg2.setOnCheckedChangeListener(listener2);
+
             }
         }
     };
@@ -52,28 +54,45 @@ public class AddMedicine extends AppCompatActivity {
                 chkId2 = rg2.getCheckedRadioButtonId();
                 rg1.clearCheck();
                 rg1.setOnCheckedChangeListener(listener1);
-                //Log.i("TEST", "rd1 : " + chkId2);
             }
         }
     };
 
     public void addMedicineToStore(View view){
-        int realCheck = chkId1 == 0 ? chkId2 : chkId1;
-        Log.i("You pressed", ": " + realCheck);
-        chkId1 = 0;
-        chkId2 = 0;
+        String quantity, medicineName;
+        quantity = editQuantity.getText().toString();
+        medicineName = editMedicine.getText().toString();
+        if (chkId1 != 0 || chkId2 != 0 && (!(medicineName.matches(""))) && (!(quantity.matches("")))) {
+            int realCheck = chkId1 == 0 ? chkId2 : chkId1;
+            int checkedRg1, checkedRg2 = 0;
+            Log.i("You pressed", ": " + realCheck);
+            Toast.makeText(this,"\tMedicine Name : "+ editMedicine.getText().toString()
+                    + "\n\tMedicine Type : " + realCheck
+                    + "\n\tMedicine Quantity : "+editQuantity.getText().toString(),Toast.LENGTH_LONG).show();
+            checkedRg1 = rg1.getCheckedRadioButtonId();
+            checkedRg2 = rg2.getCheckedRadioButtonId();
+            if (checkedRg1 != 0) {
+                rg1.clearCheck();
+            }
+            ;
+            if (checkedRg2 != 0) {
+                rg2.clearCheck();
+            }
+            editQuantity.setText("");
+            editMedicine.setText("");
+            chkId1 = 0;
+            chkId2 = 0;
+        } else if (medicineName.matches("")) {
+            Toast.makeText(this,"Please provide Medicine Name",Toast.LENGTH_SHORT).show();
+        } else if (quantity.matches("")){
+            Toast.makeText(this,"Please provide Quantity of Medicine",Toast.LENGTH_SHORT).show();
+        } else if (chkId1 == 0 && chkId2 == 0){
+            Toast.makeText(this,"Please select proper Type of Medicine",Toast.LENGTH_SHORT).show();
+        }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // User clicked on a menu option in the app bar overflow menu
-        switch (item.getItemId()) {
-            // Respond to a click on the "Up" arrow button in the app bar
-            case android.R.id.home:
-                // Navigate back to parent activity (CatalogActivity)
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
+    public void saveMedicineToStore(View view) {
+        Log.i("ADD Medicine","Saving medicines to store");
+        Toast.makeText(this,"Saving medicine to store",Toast.LENGTH_LONG).show();
     }
 }
