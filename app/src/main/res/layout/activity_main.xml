@@ -18,7 +18,7 @@
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/ic_add_shopping_cart_black_48dp" />
+        app:srcCompat="@drawable/store_icon" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -38,7 +38,7 @@
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/ic_alarm_add_black_48dp" />
+        app:srcCompat="@drawable/schedule_icon" />
 
     <ImageView
         android:id="@+id/imageReport"
@@ -54,7 +54,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/imageScheduler"
         app:layout_constraintTop_toBottomOf="@+id/imageScheduler"
-        app:srcCompat="@drawable/ic_assignment_black_48dp" />
+        app:srcCompat="@drawable/report_icon" />
 
     <ImageView
         android:id="@+id/imageSettings"
@@ -70,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="@+id/imageStore"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/imageStore"
-        app:srcCompat="@drawable/ic_settings_applications_black_48dp" />
+        app:srcCompat="@drawable/settings_icon" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline4"
