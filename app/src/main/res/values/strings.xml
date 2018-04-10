@@ -3,4 +3,8 @@
     <string name="dose_ml">ml</string>
     <string name="dose_szt">szt</string>
     <string name="dose_drop">krople</string>
+
+    <string name="title_activity_reminder_alert">ReminderAlert</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
